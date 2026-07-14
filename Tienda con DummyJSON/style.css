@@ -6,12 +6,13 @@
 
 body {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
     min-height: 100vh;
     gap: 20px;
     padding: 20px;
-    background: #84a1c481;
+    background: #f5f5f7;
+    font-family: "Inter", sans-serif;
 }
 
 .barraLateral {
@@ -20,46 +21,76 @@ body {
     gap: 20px;
     width: 300px;
     padding: 20px;
-    border: 2px solid #377c8193;
     border-radius: 20px;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+}
+.buscador {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.categoria {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+#filtrarCategoria {
+    width: 100%;
+    border: none;
+    background: transparent;
+}
+
+#filtrarCategoria option {
+    padding: 8px;
+}
+
+#filtrarCategoria :checked {
+    background: #377c81;
+    color: white;
 }
 
 main {
     flex: 1;
 }
 
-.buscador {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 2px solid #377c8193;
-}
-.categoria {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 2px solid #377c8193;
-}
-
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    padding: 10px;
+    padding: 40px;
 }
 
 .card {
     padding: 20px;
-    border: 2px solid #82926e;
+    border: none;
     border-radius: 20px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    text-align: center;
+    font-size: 12px;
 }
 
-.card h1,
-.card h2,
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.card h2 {
+    color: #2e7d32;
+    font-size: 24px;
+}
+
 .card p {
-    font-size: 20px;
-    text-align: center;
+    display: inline-block;
+    background: #e0e0e0;
+    color: #555;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .card img {
@@ -70,17 +101,6 @@ main {
     width: 200px;
 }
 
-/* CATEGORIA*/
-
-/* tablets  */
-@media (min-width: 768px) {
-    .container {
-        max-width: 100%;
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* mobile */
 @media (max-width: 767px) {
     .container {
         max-width: 100%;

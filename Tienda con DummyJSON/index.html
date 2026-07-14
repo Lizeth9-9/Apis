@@ -1,35 +1,46 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tienda con DummyJSON - API</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda con DummyJSON - API</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-
-<body>
-
-    <div class="barraLateral">
-        <div class="buscador">
-            <input type="text" id="buscar" placeholder="¿Qué estas buscando?" />
-            <button type="button" id="boton">Buscar</button>
+    <body>
+        <div class="barraLateral">
+            <div class="buscador">
+                <input
+                    type="text"
+                    id="buscar"
+                    placeholder="¿Qué estas buscando?"
+                />
+                <button type="button" id="boton">Buscar</button>
+            </div>
+            <div class="categoria">
+                <h1>Categorias</h1>
+                <select name="filtrarCategoria" id="filtrarCategoria" size="20">
+                    <option value="todas">Todas las categorías</option>
+                </select>
+                <h2>Filtrar</h2>
+                <input
+                    type="number"
+                    id="filtrarPrecio"
+                    min="0"
+                    placeholder="Precio minimo"
+                />
+            </div>
         </div>
-        <div class="categoria">
-            <h1>Categorias</h1>
-            <select name="filtrarCategoria" id="filtrarCategoria">
-                <option value="todas">Todas las categorías</option>
-            </select>
-            <h2>Filtrar</h2>
-            <input type="number" id="filtrarPrecio" min="0" placeholder="Precio minimo">
-        </div>
-    </div>
-    <main>
-        <p id="cargando">Cargando productos...</p>
-        <div class="container"> </div>
-    </main>
-    <script src="js/main.js"></script>
-</body>
-
+        <main>
+            <p id="cargando">Cargando productos...</p>
+            <div class="container"></div>
+        </main>
+        <script src="js/main.js"></script>
+    </body>
 </html>
