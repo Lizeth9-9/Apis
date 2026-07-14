@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POKEMON - API</title>
+    </head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #15447e81;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .card {
+            padding: 20px;
+            border: 2px solid #00f0ff;
+            box-shadow:
+                0 0 10px #00f0ff,
+                0 0 20px #ff007f;
+                border-radius: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .card img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            width: 200px;
+        }
+
+        /* Media query para tablets y arriba */
+        @media (min-width: 768px) {
+            .container {
+                width: 90%;
+                max-width: 900px;
+                justify-content: center;
+            }
+        }
+
+        /* Media query para desktop */
+        @media (min-width: 1024px) {
+            .container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                justify-content: center;
+            }
+        }
+    </style>
+    <body>
+        <div class="container"></div>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>

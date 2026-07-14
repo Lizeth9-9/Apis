@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick and Morty - API</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #1c157e81;
+    }
+</style>
+
+<body>
+    <div class="buscador">
+        <form action="personajes">
+            <input type="text" id="buscar" placeholder="Buscar Personaje....." autocomplete="on" />
+
+            <button type="button" id="boton">Buscar</button>
+
+        </form>
+
+
+        <div id="contenedor"></div>
+    </div>
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
