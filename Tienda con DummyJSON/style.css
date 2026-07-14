@@ -24,6 +24,13 @@ body {
     border-radius: 20px;
     /* background-color: #f0f0f0; */
 }
+.logo img {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50px; 
+}
 .buscador {
     display: flex;
     flex-direction: column;
