@@ -72,8 +72,16 @@ main {
 
 /* CATEGORIA*/
 
-/* Mpara tablets  */
+/* tablets  */
 @media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* mobile */
+@media (max-width: 767px) {
     .container {
         max-width: 100%;
         grid-template-columns: repeat(2, 1fr);
