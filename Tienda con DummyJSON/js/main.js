@@ -51,11 +51,32 @@ function filtrarProductos(lista) {
     const img = document.createElement('img');
     img.src = element.images[0];
 
+    card.addEventListener('click', () => {
+      const galeria = document.querySelector('#modalGaleria');
+      galeria.innerHTML = '';
+
+      element.images.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        galeria.appendChild(img);
+      });
+
+      document.querySelector('#modalTitulo').textContent = element.title;
+      document.querySelector('#modalDescripcion').textContent = element.description;
+      document.querySelector('#modalPrecio').textContent = element.price;
+      document.querySelector('#modalCategoria').textContent = element.category;
+
+      document.querySelector('#modalGaleria').src = element.thumbnail;
+
+      document.querySelector('#modal').classList.remove('oculto');
+    });
+
     card.appendChild(titulo);
     card.appendChild(precio);
     card.appendChild(categoria);
     card.appendChild(img);
     container.appendChild(card);
+    
   });
 }
 
@@ -86,9 +107,6 @@ function aplicarFiltros() {
   const categoriaSelec = document.querySelector('#filtrarCategoria').value;
   const precioMin = parseFloat(document.querySelector('#filtrarPrecio').value);
 
-  console.log('texto:', textoBuscado, '| categoria:', categoriaSelec, '| precioMin:', precioMin, '| total productos:', productos.length);
-
-
   const productosFiltrados = productos.filter(producto => {
     const coincideTexto = producto.title.toLowerCase().includes(textoBuscado);
     const coincideCategoria = categoriaSelec === 'todas' || producto.category === categoriaSelec;
@@ -107,3 +125,6 @@ document.querySelector('#boton').addEventListener('click', aplicarFiltros);
 document.querySelector('#filtrarCategoria').addEventListener('change', aplicarFiltros);
 document.querySelector('#filtrarPrecio').addEventListener('input', aplicarFiltros);
 document.querySelector('#buscar').addEventListener('input', aplicarFiltros);
+document.querySelector('#cerrarModal').addEventListener('click', () => {
+  document.querySelector('#modal').classList.add('oculto');
+});
