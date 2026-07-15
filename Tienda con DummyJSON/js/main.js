@@ -28,6 +28,13 @@ function filtrarProductos(lista) {
   const container = document.querySelector('.container');
   container.innerHTML = '';
 
+  if (lista.length === 0) {
+    const mensaje = document.createElement('p');
+    mensaje.textContent = '⏳ No se encontraron productos que coincidan con los filtros.';
+    container.appendChild(mensaje);
+    return;
+  }
+
   lista.forEach(element => {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -79,6 +86,9 @@ function aplicarFiltros() {
   const categoriaSelec = document.querySelector('#filtrarCategoria').value;
   const precioMin = parseFloat(document.querySelector('#filtrarPrecio').value);
 
+  console.log('texto:', textoBuscado, '| categoria:', categoriaSelec, '| precioMin:', precioMin, '| total productos:', productos.length);
+
+
   const productosFiltrados = productos.filter(producto => {
     const coincideTexto = producto.title.toLowerCase().includes(textoBuscado);
     const coincideCategoria = categoriaSelec === 'todas' || producto.category === categoriaSelec;
@@ -96,3 +106,4 @@ obtenerCategorias();
 document.querySelector('#boton').addEventListener('click', aplicarFiltros);
 document.querySelector('#filtrarCategoria').addEventListener('change', aplicarFiltros);
 document.querySelector('#filtrarPrecio').addEventListener('input', aplicarFiltros);
+document.querySelector('#buscar').addEventListener('input', aplicarFiltros);

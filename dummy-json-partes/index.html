@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - DummyJSON</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">SALES CHEAP</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Sidebar con filtros -->
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h2>Categorías</h2>
+                    <div id="categoriesList" class="categories-list">
+                        <button class="category-btn active" data-category="all">
+                            Todas las categorías
+                        </button>
+                        <!-- Las categorías se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Grid de productos -->
+            <section class="products-section">
+                <div class="products-header">
+                    <h2 id="sectionTitle">Todos los Productos</h2>
+                    <span id="productsCount" class="products-count"></span>
+                </div>
+                
+                <!-- Loading spinner -->
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando productos...</p>
+                </div>
+
+                <!-- Error message -->
+                <div id="error" class="error-message" style="display: none;">
+                    <p>❌ Error al cargar los productos. Por favor, intenta de nuevo.</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productsGrid" class="products-grid">
+                    <!-- Los productos se cargarán aquí -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de detalle del producto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- El contenido del producto se cargará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
