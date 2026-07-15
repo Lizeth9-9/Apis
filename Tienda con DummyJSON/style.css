@@ -5,9 +5,11 @@
 }
 
 body {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-areas:
+        "header header"
+        "sidebar main";
     min-height: 100vh;
     gap: 20px;
     padding: 20px;
@@ -15,21 +17,38 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
 .barraLateral {
+    grid-area: sidebar;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 300px;
+    width: 100%;
     padding: 20px;
     border-radius: 20px;
-    /* background-color: #f0f0f0; */
+}
+
+main {
+    grid-area: main;
+    min-width: 0;
 }
 .logo img {
     width: 180px;
     height: auto;
     display: block;
-    margin: 0 auto;
-    border-radius: 50px; 
+    border-radius: 50px;
 }
 .buscador {
     display: flex;
@@ -60,22 +79,19 @@ body {
     color: white;
 }
 
-.categoria h1 {
+.categoria h2 {
     font-size: 17px;
     font-weight: 600;
     margin-top: 15px;
     margin-bottom: 15px;
     color: #333;
 }
-main {
-    flex: 1;
-}
 
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    padding: 35px;
+    gap: 24px;
+    padding: 10px 0;
 }
 
 .card {
@@ -88,7 +104,7 @@ main {
         transform 0.2s ease,
         box-shadow 0.2s ease;
     text-align: center;
-   }
+}
 
 .card:hover {
     transform: translateY(-5px);
@@ -97,7 +113,6 @@ main {
 .card h1 {
     color: #2e362e;
     font-size: 20px;
-  
 }
 .card h2 {
     color: #2e7d32;
@@ -105,7 +120,7 @@ main {
     margin-top: 10px;
 }
 .card h2::after {
-  content: " - €";
+    content: " - €";
 }
 
 .card p {
@@ -132,7 +147,7 @@ main {
 #filtrarPrecio {
     width: 100%;
     padding: 10px 14px;
-    border: 1px solid #ddd;
+    border: 1px solid #d8e1e4;
     border-radius: 10px;
     font-size: 14px;
     font-family: inherit;

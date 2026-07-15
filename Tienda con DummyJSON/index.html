@@ -1,49 +1,49 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tienda con DummyJSON - API</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-            rel="stylesheet"
-        />
-    </head>
 
-    <body>
-        <div class="barraLateral">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda con DummyJSON - API</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div id="header" class="contenido">
             <div class="logo">
                 <img src="img/Gemini_Generated_Image_cgpzhlcgpzhlcgpz.png" alt="Logo drummy" />
             </div>
-            <div class="buscador">
-                <input
-                    type="text"
-                    id="buscar"
-                    placeholder="¿Qué estas buscando?"
-                />
-                <button type="button" id="boton">Buscar</button>
-            </div>
-            <div class="categoria">
-                <h1>Categorias</h1>
-                <select name="filtrarCategoria" id="filtrarCategoria" size="20">
-                    <option value="todas">Todas las categorías</option>
-                </select>
-                <h1>Filtrar Precio</h1>
-                <input
-                    type="number"
-                    id="filtrarPrecio"
-                    min="10"
-                    placeholder="Precio minimo"
-                />
-            </div>
         </div>
-        <main>
-            <p id="cargando">Cargando productos...</p>
-            <div class="container"></div>
-        </main>
-        <script src="js/main.js"></script>
-    </body>
+    </header>
+
+    <aside class="barraLateral">
+        <form class="buscador">
+            <input type="text" id="buscar" placeholder="¿Qué estas buscando?" />
+            <button type="button" id="boton">Buscar</button>
+        </form>
+
+        <section class="categoria">
+            <h2>Categorias</h2>
+            <select name="filtrarCategoria" id="filtrarCategoria" size="20">
+                <option value="todas">Todas las categorías</option>
+            </select>
+            <h2>Precio</h2>
+            <input type="number" id="filtrarPrecio" min="10" placeholder="Precio minimo" />
+        </section>
+    </aside>
+
+    <main>
+        <p id="cargando">Cargando productos...</p>
+        <section class="container" aria-label="Listado de productos"></section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
 </html>

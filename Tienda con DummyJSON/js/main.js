@@ -2,7 +2,7 @@ let productos = [];
 
 async function obtenerDatos() {
   try {
-    const respuesta = await fetch('https://dummyjson.com/products');
+    const respuesta = await fetch('https://dummyjson.com/products?limit=0');
     const datos = await respuesta.json();
     console.log(datos);
 
