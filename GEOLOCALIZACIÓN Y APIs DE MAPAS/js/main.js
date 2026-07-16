@@ -35,3 +35,16 @@ async function obtenerDatos() {
     }
 }
 obtenerDatos();
+
+
+async function geocodificarDireccion () {
+    try {
+const respuesta = await fetch ('https://nominatim.openstreetmap.org/search?
+format=json&q=Plaza+de+la+Virgen+Blanca+1+Vitoria-Gasteiz');
+
+
+        
+    } catch (error) {
+        
+    }
+}
