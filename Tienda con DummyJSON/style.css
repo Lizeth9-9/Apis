@@ -52,7 +52,7 @@ main {
 
 /* #region Cabecera y logo */
 .logo img {
-    width: 180px;
+    width: 100px;
     height: auto;
     display: block;
     border-radius: 50px;
@@ -60,12 +60,6 @@ main {
 /* #endregion */
 
 /* #region Iconos */
-.iconos {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 8px;
-}
 .iconos img {
     display: block;
     max-width: 48px;

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POKEMON - API</title>
+    </head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #15447e81;
+        }
+
+     
+
+        
+        /* Media query para tablets y arriba */
+        @media (min-width: 768px) {
+            .container {
+                width: 90%;
+                max-width: 900px;
+                justify-content: center;
+            }
+        }
+
+        /* Media query para desktop */
+        @media (min-width: 1024px) {
+            .container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                justify-content: center;
+            }
+        }
+    </style>
+    <body>
+        <div class="container"></div>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
