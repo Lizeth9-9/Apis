@@ -26,7 +26,7 @@ async function galeria() {
             favoritos: JSON.parse(localStorage.getItem('favoritosPhotos')) || []
         }
         function Contador() {
-            document.querySelector('#contador').textContent = `Favoritos: ${state.favoritos.length}`;
+            document.querySelector('#contador').textContent = `❤️ ${state.favoritos.length}`;
 
         };
         Contador();
@@ -45,7 +45,7 @@ async function galeria() {
             const img = document.createElement('img');
             img.src = element.urls.regular;
 
-            const fotografo = document.createElement('h1');
+            const fotografo = document.createElement('h2');
             fotografo.textContent = element.user.name;
 
             const boton = document.createElement('button');
