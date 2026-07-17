@@ -1,19 +1,38 @@
+
+
 async function galeria() {
     try {
+        const container = document.querySelector('.container');
         // edpoint predefinido
         /*         const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4'); */
         // edpoint con 20 img
-        const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&per_page=20&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4');
+        const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&per_page=30&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4');
+
+        for  (let i = 0; i < 8; i++) {
+            const skeleton = document.createElement('div');
+            skeleton.classList.add('skeleton');
+
+            const skeletonBox = document.createElement('div');
+            skeletonBox.classList.add('skeleton-box');
+
+            skeleton.appendChild(skeletonBox);
+            container.appendChild(skeleton);
+        }
         const datos = await respuesta.json();
         console.log(datos);
 
         const state = {
             fotos: datos.results,
             favoritos: JSON.parse(localStorage.getItem('favoritosPhotos')) || []
+        }
+        function Contador() {
+            document.querySelector('#contador').textContent = `Favoritos: ${state.favoritos.length}`;
+
         };
+        Contador();
 
+        container.innerHTML = '';
 
-        const container = document.querySelector('.container');
         datos.results.forEach(element => {
             // console.log(element.urls.regular);
 
@@ -74,6 +93,7 @@ async function galeria() {
                 state.favoritos.splice(index, 1);
             }
             guardarFavoritos();
+            Contador();
         }
 
     } catch (error) {
