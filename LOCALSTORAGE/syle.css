@@ -1,0 +1,211 @@
+:root {
+    --color-bg: #f5f2eb;
+    /*fondo general*/
+    --color-bg-card: #ffffff;
+    /*Fondo de las cards*/
+    --color-bg-card-alt: #faf8f4;
+    /*Fondo alternativo de cards (hover)*/
+    --color-primary: #2d5a27;
+    /*Verde bosque (títulos)*/
+    --color-secondary: #8b9d83;
+    /*Verde salvia (bordes decorativos)*/
+    --color-text-primary: #2c3e2f;
+    /*Textos principales */
+    --color-text-secondary: #5a6b5e;
+    /*Textos secundarios */
+    --color-heart: #c17a7a;
+    /*Corazón inactivo*/
+    --color-heart-active: #a05252;
+    /*Corazón activo (favorito)*/
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    font-family: "Roboto", sans-serif;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--color-text-primary);
+    padding: 30px 0;
+}
+header h1::after {
+    content: "🌿";
+    font-size: 32px;
+    margin-left: 12px;
+    opacity: 0.7;
+}
+header h1::before {
+    content: "🌿";
+    font-size: 32px;
+    margin-right: 12px;
+    opacity: 0.7;
+}
+
+/* ===== CONTADOR ===== */
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#contador {
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
+    /* se pega cuando toca el borde superior de la ventana */
+    z-index: 10;
+    /* pqueda por encima de las cards al superponerse */
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 10px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 16px var(--color-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 20px 20px;
+}
+#contador:hover {
+    box-shadow: 0 6px 24px rgba(45, 90, 39, 0.18);
+    transform: translateY(-1px);
+}
+
+/* ===== CONTENEDOR GRID ===== */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding-inline: 150px;
+}
+
+/* ===== CARD (contenedor principal) ===== */
+.card {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(45, 90, 39, 0.16);
+}
+/* ===== CARD2 (interior de cada foto) ===== */
+.card2 {
+    background: var(--color-bg-card);
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 20px var(--color-shadow);
+    transition:
+        transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.35s ease;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card2:hover {
+    background: #f8f6f0;
+}
+
+.card2 h2 {
+    margin-top: 20px;
+    font-size: 25px;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.card2 img {
+    width: 95%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+.card:hover .card2 img {
+    transform: scale(1.02);
+}
+
+/* ===== BOTÓN CORAZÓN ===== */
+.card2 button {
+    margin-top: 8px;
+    padding: 8px 15px;
+    font-size: 50px;
+    border: none;
+    border-radius: 50px;
+    background: transparent;
+    color: var(--color-heart);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    line-height: 1;
+    background: rgba(193, 122, 122, 0.08);
+}
+.card2 button:hover {
+    transform: scale(1.15);
+    background: rgba(193, 122, 122, 0.15);
+}
+.card2 button:active {
+    transform: scale(0.92);
+}
+
+.card2 button.activo {
+    color: var(--color-heart-active);
+    background: rgba(160, 82, 82, 0.12);
+    animation: latido 0.4s ease;
+}
+
+/* ===== SKELETON ===== */
+.skeleton {
+    background: var(--color-bg-card);
+    box-shadow: 0 4px 20px var(--color-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 10px;
+    height: 300px;
+}
+
+.skeleton .skeleton-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #e8e4dc 25%, #f2efe8 50%, #e8e4dc 75%);
+    background-size: 200% 100%;
+    animation: pulso 1.8s infinite;
+}
+
+@keyframes pulso {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

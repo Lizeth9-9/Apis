@@ -1,4 +1,14 @@
+// ==========================================
+// PASO 1: CONFIGURACIÓN DE LA API
+// ==========================================
 
+/* const URL_BASE_API = 'https://api.unsplash.com/search/photos';
+const PARAMETROS_BUSQUEDA = {
+    query: 'nature',      // Tema de búsqueda
+    per_page: 12,         // Cantidad de fotos
+    client_id: API_KEY    // Nuestra clave de acceso
+};
+ */
 
 async function galeria() {
     try {
@@ -8,7 +18,7 @@ async function galeria() {
         // edpoint con 20 img
         const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&per_page=30&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4');
 
-        for  (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             const skeleton = document.createElement('div');
             skeleton.classList.add('skeleton');
 
@@ -31,6 +41,31 @@ async function galeria() {
         };
         Contador();
 
+        // ==========================================
+        // BOTON FAVORITOS -MUESTRA LO SELECCIONADO FAVORITO
+        // ==========================================   
+        let mostrandoFavoritos = false;
+
+        document.querySelector('#contador').addEventListener('click', () => {
+            mostrandoFavoritos = !mostrandoFavoritos;
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const boton = card.querySelector('button');
+                const favorite = boton.classList.contains('activo');
+
+                if (mostrandoFavoritos) {
+                    if (favorite) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                } else {
+                    card.style.display = 'block';
+                }
+            });
+        });
+
         container.innerHTML = '';
 
         datos.results.forEach(element => {
@@ -48,6 +83,11 @@ async function galeria() {
             const fotografo = document.createElement('h2');
             fotografo.textContent = element.user.name;
 
+
+
+            // ==========================================
+            // BOTON FAVORITOS
+            // ==========================================   
             const boton = document.createElement('button');
 
             if (state.favoritos.includes(element.id)) {
@@ -94,6 +134,7 @@ async function galeria() {
             }
             guardarFavoritos();
             Contador();
+
         }
 
     } catch (error) {
