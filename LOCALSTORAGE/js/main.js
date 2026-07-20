@@ -14,9 +14,12 @@ async function galeria() {
     try {
         const container = document.querySelector('.container');
         // edpoint predefinido
-        /*         const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4'); */
-        // edpoint con 20 img
         const respuesta = await fetch('https://api.unsplash.com/search/photos?query=nature&per_page=30&client_id=cknF6p-DUqn7m70r9nkgLVBxrho-bXopa3TrlbCqVo4');
+
+
+        // =======================================
+        // SKELETON - PANTALLA DE CARGA TEMPORAL
+        // =======================================
 
         for (let i = 0; i < 8; i++) {
             const skeleton = document.createElement('div');
@@ -35,15 +38,18 @@ async function galeria() {
             fotos: datos.results,
             favoritos: JSON.parse(localStorage.getItem('favoritosPhotos')) || []
         }
+
+        //FUNCION DE CONTADOR CADA QUE SE SELECCIONA FOTO//
+
         function Contador() {
             document.querySelector('#contador').textContent = `❤️ ${state.favoritos.length}`;
 
         };
         Contador();
 
-        // ==========================================
+        // ==================================================
         // BOTON FAVORITOS -MUESTRA LO SELECCIONADO FAVORITO
-        // ==========================================   
+        // ================================================== 
         let mostrandoFavoritos = false;
 
         document.querySelector('#contador').addEventListener('click', () => {
@@ -65,9 +71,12 @@ async function galeria() {
                 }
             });
         });
-
+        // Container en vacio para borrar y dejarle vacio 
         container.innerHTML = '';
 
+        // ==========================================
+        // PINTARNDO LAS CARD:FOTOS, AUTOR
+        // ==========================================   
         datos.results.forEach(element => {
             // console.log(element.urls.regular);
 
@@ -83,11 +92,11 @@ async function galeria() {
             const fotografo = document.createElement('h2');
             fotografo.textContent = element.user.name;
 
-
-
             // ==========================================
             // BOTON FAVORITOS
             // ==========================================   
+
+            // pintando el boton antes del clik//
             const boton = document.createElement('button');
 
             if (state.favoritos.includes(element.id)) {
@@ -98,6 +107,7 @@ async function galeria() {
                 boton.textContent = '🤍';
             }
 
+            // cambia el estado al dar click se activa por medio del id//
             boton.addEventListener('click', () => {
                 boton.classList.toggle('activo');
                 toggleFavorito(element.id);
@@ -114,15 +124,17 @@ async function galeria() {
             card2.appendChild(fotografo)
             card2.appendChild(boton)
             card.appendChild(card2)
-
             container.appendChild(card)
         });
 
+        // LOCAL STORE - PARA GUARDAR -ALMACENAMIENTO LOCAL
         function guardarFavoritos() {
             localStorage.setItem('favoritosPhotos', JSON.stringify(state.favoritos))
             console.log(localStorage);
 
         }
+
+        // DECIDE GUARDAR SEGUN EL ID 
 
         function toggleFavorito(id) {
             const index = state.favoritos.indexOf(id);
